@@ -261,6 +261,24 @@ def build():
           shell(f"Contact — {SITE_NAME}", contact, 2,
                 desc=f"Contact {SITE_NAME}.", current="contact"))
 
+    # ---------- redirects for old Shopify paths ----------
+    # Collection and blog URLs that no longer have a page of their own, but may
+    # still be linked from elsewhere. Bounce them to the catalogue.
+    for path in ("collections/frontpage", "collections/all", "blogs/news"):
+        write(f"{path}/index.html", f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{SITE_NAME}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="/">
+<script>window.location.replace('/');</script>
+<meta http-equiv="refresh" content="0; url=/">
+</head>
+<body></body>
+</html>
+""")
+
     # ---------- 404 ----------
     nf = """    <div class="prose">
       <h1>Page not found</h1>
