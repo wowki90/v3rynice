@@ -220,19 +220,22 @@ def build():
                     desc=plain or PAUSED_MSG, current="shop"))
 
     # ---------- the promise ----------
-    promise = f"""    <div class="prose">
+    # Mirrors the original Shopify rich-text section: centred, with the pledge
+    # set larger than body copy (it was marked up as a heading there).
+    promise = f"""    <div class="prose prose--center">
       <h1>The {SITE_NAME} Promise</h1>
       <p>At {SITE_NAME}, we want to support change by combining style with purpose,
       creating a world where every purchase makes a meaningful impact.</p>
-      <p>We pledge 50% of our profits to causes that inspire change, starting with
-      supporting humanitarian efforts in Ukraine. Together, we can help provide
-      essential aid to those in need.
-      <a href="{CHARITY_URL}" target="_blank" rel="noopener noreferrer">Learn more about our current charity</a>.</p>
+      <p class="pledge">We pledge <strong>50% of our profits</strong> to causes that
+      inspire change, starting with supporting humanitarian efforts in Ukraine.
+      Together, we can help provide essential aid to those in need.</p>
+      <p><a href="{CHARITY_URL}" target="_blank" rel="noopener noreferrer">Follow this link</a>
+      to learn more about our current charity.</p>
       <p>As our brand grows, we plan to support other meaningful causes and even
       give you the option to choose where your contribution goes.</p>
-      <p><em>The shop is paused for now, so nothing is available to order — but the
-      promise stands for whenever it opens again.</em></p>
-      <div class="btn-row"><a class="btn" href="../../">Have a look at the range</a></div>
+      <p class="fine">The shop is paused for now, so nothing is available to order —
+      but the promise stands for whenever it opens again.</p>
+      <div class="btn-row"><a class="btn" href="../../">Enter {SITE_NAME} Shop</a></div>
     </div>"""
     write("pages/the-very-nice-promise/index.html",
           shell(f"The {SITE_NAME} Promise", promise, 2,

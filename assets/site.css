@@ -261,6 +261,34 @@ main { flex: 1 0 auto; padding: 56px 0 80px; }
 .prose a { color: var(--ink); }
 .prose .btn-row { margin-top: 30px; }
 
+/* Centred rich-text page, matching the original Shopify layout. */
+.prose--center { text-align: center; max-width: 720px; }
+.prose--center h1 { font-size: 38px; line-height: 1.15; margin-bottom: 28px; }
+.prose--center .btn-row { margin-top: 38px; }
+
+/* The pledge is the anchor of the page — set well above body copy,
+   as the original did by marking it up as a heading. */
+/* `.prose .pledge`, not `.pledge` — `.prose p` above is more specific and
+   would mute the colour back to body grey. */
+.prose .pledge {
+  font-size: 23px;
+  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 30px 0 26px;
+}
+
+.prose .pledge strong { font-weight: 700; }
+
+.prose--center .fine {
+  font-size: 14px;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  margin-top: 34px;
+}
+
 /* `a.btn`, not `.btn` — `.prose a` above would otherwise win on specificity
    and paint the label black-on-black. */
 a.btn {
@@ -301,6 +329,8 @@ a.btn:hover { opacity: 0.85; }
   main { padding: 38px 0 60px; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 28px 16px; }
   .lede h1, .prose h1 { font-size: 25px; }
+  .prose--center h1 { font-size: 28px; }
+  .prose .pledge { font-size: 19px; margin: 24px 0 20px; }
   .site-head .logo img { width: 116px; }
   .wrap { padding: 0 18px; }
 }
